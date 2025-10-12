@@ -1,3 +1,13 @@
 Flask
 scikit-learn
 pytest
+Core application dependencies
+fastapi
+uvicorn[standard]
+pydantic
+numpy
+
+MLflow dependencies for model loading (sklearn flavor)
+mlflow
+scikit-learn
+pandas

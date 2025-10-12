@@ -1,0 +1,21 @@
+# Use an official Python runtime as a parent image (slim image is smaller)
+FROM python:3.10-slim
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the dependency file into the container
+COPY requirements.txt .
+
+# Install dependencies, using --no-cache-dir to minimize image size
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the application code into the container
+COPY app.py .
+
+# Expose the port the API runs on
+EXPOSE 8000
+
+# Command to run the application using Uvicorn (a fast ASGI server)
+# The application entry point is 'app:app' (file app.py, object app)
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
